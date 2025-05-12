@@ -38,7 +38,7 @@ function Footer() {
                     </div>
                 </div>
                 <div className="text-center flex justify-center font-semibold text-lg lg:text-xl mx-5 space-y-5">
-                    <Link to='/shop'>
+                    <Link to='/'>
                         <h1 className='mx-4'>Shop</h1>
                     </Link>
                     <Link to='/about'>

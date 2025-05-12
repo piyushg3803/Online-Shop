@@ -682,21 +682,21 @@ function Profile() {
                                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                                     <div className="bg-teal-50 rounded-xl p-4 flex items-center justify-between">
                                                         <div>
-                                                            <p className="text-sm text-teal-600">Items in Wishlist</p>
-                                                            <p className="text-2xl font-bold text-teal-600">{wishListQuantity || 0}</p>
-                                                        </div>
-                                                        <div className="w-10 h-10 flex items-center justify-center rounded-full bg-teal-100">
-                                                            <FontAwesomeIcon icon={faHeart} className='text-teal-600' />
-                                                        </div>
-                                                    </div>
-
-                                                    <div className="bg-teal-50 rounded-xl p-4 flex items-center justify-between">
-                                                        <div>
                                                             <p className="text-sm text-teal-700">Items in Cart</p>
                                                             <p className="text-2xl font-bold text-teal-600">{cartQuantity || 0}</p>
                                                         </div>
                                                         <div className="w-10 h-10 flex items-center justify-center rounded-full bg-teal-100">
                                                             <FontAwesomeIcon icon={faCartShopping} className='text-teal-600' />
+                                                        </div>
+                                                    </div>
+
+                                                    <div className="bg-teal-50 rounded-xl p-4 flex items-center justify-between">
+                                                        <div>
+                                                            <p className="text-sm text-teal-600">Items in Wishlist</p>
+                                                            <p className="text-2xl font-bold text-teal-600">{wishListQuantity || 0}</p>
+                                                        </div>
+                                                        <div className="w-10 h-10 flex items-center justify-center rounded-full bg-teal-100">
+                                                            <FontAwesomeIcon icon={faHeart} className='text-teal-600' />
                                                         </div>
                                                     </div>
                                                 </div>
