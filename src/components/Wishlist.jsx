@@ -136,7 +136,7 @@ function Wishlist() {
                             <FontAwesomeIcon icon={faHeart} />
                         </div>
                         <h1 className="text-xl md:text-2xl text-gray-800 mb-4 font-medium">
-                            Your cart is currently empty
+                            Your Wishlist is currently empty
                         </h1>
                         <p className="text-gray-600 mb-8">
                             Looks like you haven't added anything to your cart yet. Start shopping to fill it with amazing products!
