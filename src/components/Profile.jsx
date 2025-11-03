@@ -35,7 +35,7 @@ function Profile() {
 
     const handleLogout = async () => {
         try {
-            const response = await fetch("https://ecom-kl8f.onrender.com/api/auth/user/logout", {
+            const response = await fetch("https://ecom-qybu.onrender.com/api/auth/user/logout", {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -92,7 +92,7 @@ function Profile() {
             const endpoint = signedUp ? '/user/register' : '/user/login';
             const userData = signedUp ? signupData : loginData;
 
-            const response = await fetch(`https://ecom-kl8f.onrender.com/api/auth${endpoint}`, {
+            const response = await fetch(`https://ecom-qybu.onrender.com/api/auth${endpoint}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(userData),
@@ -138,7 +138,7 @@ function Profile() {
         formData.append('profileImage', file);
 
         try {
-            const response = await fetch('https://ecom-kl8f.onrender.com/api/auth/user/profile-image', {
+            const response = await fetch('https://ecom-qybu.onrender.com/api/auth/user/profile-image', {
                 method: 'PATCH',
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -165,7 +165,7 @@ function Profile() {
         setLoading(true);
 
         try {
-            const response = await fetch('https://ecom-kl8f.onrender.com/api/auth/user/profile', {
+            const response = await fetch('https://ecom-qybu.onrender.com/api/auth/user/profile', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -190,7 +190,7 @@ function Profile() {
 
     const updateQuantity = async () => {
         try {
-            const response = await fetch('https://ecom-kl8f.onrender.com/api/auth/user/profile', {
+            const response = await fetch('https://ecom-qybu.onrender.com/api/auth/user/profile', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -235,7 +235,7 @@ function Profile() {
         }
 
         try {
-            const response = await fetch('https://ecom-kl8f.onrender.com/api/auth/user/password-forgot', {
+            const response = await fetch('https://ecom-qybu.onrender.com/api/auth/user/password-forgot', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email: forgotPasswordMail }),

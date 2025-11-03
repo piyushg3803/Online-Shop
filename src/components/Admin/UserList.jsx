@@ -20,7 +20,7 @@ function UserList() {
                 setLoading(true);
 
                 const token = localStorage.getItem('authToken')
-                const response = await fetch('https://ecom-kl8f.onrender.com/api/auth/admin/users', {
+                const response = await fetch('https://ecom-qybu.onrender.com/api/auth/admin/users', {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }
@@ -41,7 +41,7 @@ function UserList() {
     const handleDelete = async (userId) => {
         try {
             const token = localStorage.getItem('authToken')
-            await fetch(`https://ecom-kl8f.onrender.com/api/auth/admin/user/${userId}`, {
+            await fetch(`https://ecom-qybu.onrender.com/api/auth/admin/user/${userId}`, {
                 method: 'DELETE',
                 headers: {
                     Authorization: `Bearer ${token}`

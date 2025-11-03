@@ -24,7 +24,7 @@ function Wishlist() {
                     setLoading(false);
                     return;
                 }
-                const response = await fetch('https://ecom-kl8f.onrender.com/api/auth/user/watchlist', {
+                const response = await fetch('https://ecom-qybu.onrender.com/api/auth/user/watchlist', {
                     headers: {
                         'Content-Type': 'application/json',
                         Authorization: `Bearer ${token}`, // Add Authorization header
@@ -64,7 +64,7 @@ function Wishlist() {
             const token = localStorage.getItem("authToken")
 
             const selectedProduct = wishList.find((item) => item._id === productId);
-            const response = await axios.post(`https://ecom-kl8f.onrender.com/api/cart/${productId}`, {
+            const response = await axios.post(`https://ecom-qybu.onrender.com/api/cart/${productId}`, {
                 productId: selectedProduct._id,
                 quantity: 1,
             }, {
@@ -83,7 +83,7 @@ function Wishlist() {
     const removeItem = async (productId) => {
         try {
             const token = localStorage.getItem('authToken');
-            const response = await fetch(`https://ecom-kl8f.onrender.com/api/auth/user/watchlist/${productId}`, {
+            const response = await fetch(`https://ecom-qybu.onrender.com/api/auth/user/watchlist/${productId}`, {
                 method: 'DELETE',
                 headers: {
                     Authorization: `Bearer ${token}`,

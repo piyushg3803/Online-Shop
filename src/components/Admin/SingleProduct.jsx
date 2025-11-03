@@ -17,7 +17,7 @@ function SingleProduct() {
             try {
                 const token = localStorage.getItem('authToken');
 
-                const response = await fetch(`https://ecom-kl8f.onrender.com/api/product/${id}`, {
+                const response = await fetch(`https://ecom-qybu.onrender.com/api/product/${id}`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
@@ -43,7 +43,7 @@ function SingleProduct() {
     const deleteReview = async (reviewId) => {
         try {
             const token = localStorage.getItem('authToken');
-            const response = await fetch(`https://ecom-kl8f.onrender.com//api/product/${id}/review/auth${reviewId}`, {
+            const response = await fetch(`https://ecom-qybu.onrender.com//api/product/${id}/review/auth${reviewId}`, {
                 method: 'DELETE',
                 headers: {
                     Authorization: `Bearer ${token}`,

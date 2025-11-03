@@ -33,7 +33,7 @@ function ProductPage() {
         const loadProduct = async () => {
             try {
                 // Fetch product
-                const productResponse = await fetch(`https://ecom-kl8f.onrender.com/api/product/${id}`);
+                const productResponse = await fetch(`https://ecom-qybu.onrender.com/api/product/${id}`);
                 if (!productResponse.ok) {
                     throw new Error('Failed to fetch product');
                 }
@@ -42,7 +42,7 @@ function ProductPage() {
 
                 // Fetch reviews (wrapped in try-catch block)
                 try {
-                    const reviewResponse = await fetch(`https://ecom-kl8f.onrender.com/api/product/reviews/${id}`);
+                    const reviewResponse = await fetch(`https://ecom-qybu.onrender.com/api/product/reviews/${id}`);
                     if (reviewResponse.ok) {
                         const reviewData = await reviewResponse.json();
                         setReviews(reviewData.reviews || []);
@@ -86,7 +86,7 @@ function ProductPage() {
 
         try {
             const response = await fetch(
-                `https://ecom-kl8f.onrender.com/api/product/reviews/${id}`,
+                `https://ecom-qybu.onrender.com/api/product/reviews/${id}`,
                 {
                     method: 'POST',
                     headers: {
@@ -168,7 +168,7 @@ function ProductPage() {
 
         try {
             const response = await fetch(
-                'https://ecom-kl8f.onrender.com/api/order/create',
+                'https://ecom-qybu.onrender.com/api/order/create',
                 {
                     method: 'POST',
                     headers: {
@@ -220,7 +220,7 @@ function ProductPage() {
                 return;
             }
 
-            const response = await axios.post(`https://ecom-kl8f.onrender.com/api/auth/user/watchlist/${id}`, {
+            const response = await axios.post(`https://ecom-qybu.onrender.com/api/auth/user/watchlist/${id}`, {
                 productId: id,
             },
                 {

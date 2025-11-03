@@ -16,7 +16,7 @@ function Home() {
         const loadProducts = async () => {
             try {
                 setLoading(true);
-                const response = await fetch('https://ecom-kl8f.onrender.com/api/product');
+                const response = await fetch('https://ecom-qybu.onrender.com/api/product');
                 const data = await response.json();
                 setProduct(data.products);
                 setLoading(false);
@@ -51,7 +51,7 @@ function Home() {
             }
             else {
                 const selectedProduct = product.find((item) => item._id === productId);
-                const response = await axios.post(`https://ecom-kl8f.onrender.com/api/cart/${productId}`, {
+                const response = await axios.post(`https://ecom-qybu.onrender.com/api/cart/${productId}`, {
                     productId: selectedProduct._id,
                     quantity: 1,
                 }, {
@@ -78,7 +78,7 @@ function Home() {
             }
 
             const selectedProduct = product.find((item) => item._id === productId);
-            const response = await axios.post(`https://ecom-kl8f.onrender.com/api/auth/user/watchlist/${productId}`, {
+            const response = await axios.post(`https://ecom-qybu.onrender.com/api/auth/user/watchlist/${productId}`, {
                 productId: selectedProduct._id,
             },
                 {
@@ -99,7 +99,7 @@ function Home() {
         }
     };
 
-    const imageUrl = "https://ecom-kl8f.onrender.com"
+    const imageUrl = "https://ecom-qybu.onrender.com"
 
     return (
         <div className='pt-16 pb-10 bg-gray-50 font-jakarta'>

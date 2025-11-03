@@ -16,7 +16,7 @@ function RecentOrders() {
       try {
         setLoading(true);
         const token = localStorage.getItem('authToken');
-        const response = await fetch('https://ecom-kl8f.onrender.com/api/order/admin/orders', {
+        const response = await fetch('https://ecom-qybu.onrender.com/api/order/admin/orders', {
           headers: {
             'Content-Type': 'application/json',
             Authorization: `Bearer ${token}`

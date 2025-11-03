@@ -102,7 +102,7 @@ function AddProduct() {
 
         try {
             const token = localStorage.getItem('authToken');
-            const response = await fetch('https://ecom-kl8f.onrender.com/api/product/create', {
+            const response = await fetch('https://ecom-qybu.onrender.com/api/product/create', {
                 method: 'POST',
                 headers: {
                     Authorization: `Bearer ${token}`,

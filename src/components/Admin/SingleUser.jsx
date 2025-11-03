@@ -19,7 +19,7 @@ function SingleUser() {
             try {
                 const token = localStorage.getItem('authToken');
 
-                const response = await fetch(`https://ecom-kl8f.onrender.com/api/auth/admin/user/${id}`, {
+                const response = await fetch(`https://ecom-qybu.onrender.com/api/auth/admin/user/${id}`, {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
@@ -47,7 +47,7 @@ function SingleUser() {
     const fetchCartItems = async () => {
         try {
             const token = localStorage.getItem('authToken');
-            const response = await fetch(`https://ecom-kl8f.onrender.com/api/auth/admin/user/${id}/cart`, {
+            const response = await fetch(`https://ecom-qybu.onrender.com/api/auth/admin/user/${id}/cart`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -70,7 +70,7 @@ function SingleUser() {
     const fetchWishlistItems = async () => {
         try {
             const token = localStorage.getItem('authToken');
-            const response = await fetch(`https://ecom-kl8f.onrender.com/api/auth/admin/user/${id}/watchlist`, {
+            const response = await fetch(`https://ecom-qybu.onrender.com/api/auth/admin/user/${id}/watchlist`, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },

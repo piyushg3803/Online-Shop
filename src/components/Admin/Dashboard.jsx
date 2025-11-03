@@ -22,7 +22,7 @@ function Dashboard() {
                 const token = localStorage.getItem('authToken');
 
                 // Fetch users
-                const usersResponse = await fetch('https://ecom-kl8f.onrender.com/api/auth/admin/users', {
+                const usersResponse = await fetch('https://ecom-qybu.onrender.com/api/auth/admin/users', {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
@@ -31,7 +31,7 @@ function Dashboard() {
                 setUsers(usersData.data || []);
 
                 // Fetch orders
-                const ordersResponse = await fetch('https://ecom-kl8f.onrender.com/api/order/admin/orders', {
+                const ordersResponse = await fetch('https://ecom-qybu.onrender.com/api/order/admin/orders', {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
