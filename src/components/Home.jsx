@@ -16,7 +16,7 @@ function Home() {
         const loadProducts = async () => {
             try {
                 setLoading(true);
-                const response = await fetch('https://ecom-qybu.onrender.com/api/product');
+                const response = await fetch('https://online-shop-backend-qpnv.onrender.com/api/product');
                 const data = await response.json();
                 setProduct(data.products);
                 setLoading(false);
@@ -30,6 +30,8 @@ function Home() {
 
         loadProducts()
     }, [])
+
+    console.log("Products", product);
 
     const generateStars = (rating) => {
         const stars = [];
@@ -51,12 +53,12 @@ function Home() {
             }
             else {
                 const selectedProduct = product.find((item) => item._id === productId);
-                const response = await axios.post(`https://ecom-qybu.onrender.com/api/cart/${productId}`, {
+                const response = await axios.post(`https://online-shop-backend-qpnv.onrender.com/api/cart/${ productId }`, {
                     productId: selectedProduct._id,
                     quantity: 1,
                 }, {
                     headers: {
-                        Authorization: `Bearer ${token}`
+                        Authorization: `Bearer ${ token }`
                     }
                 });
                 console.log('Product added to cart:', response.data);
@@ -69,7 +71,6 @@ function Home() {
 
     const handleFavs = async (productId) => {
         try {
-
             const token = localStorage.getItem("authToken")
 
             if (!token) {
@@ -78,12 +79,12 @@ function Home() {
             }
 
             const selectedProduct = product.find((item) => item._id === productId);
-            const response = await axios.post(`https://ecom-qybu.onrender.com/api/auth/user/watchlist/${productId}`, {
+            const response = await axios.post(`https://online-shop-backend-qpnv.onrender.com/api/auth/user/watchlist/${ productId }`, {
                 productId: selectedProduct._id,
             },
                 {
                     headers: {
-                        Authorization: `Bearere ${token}`
+                        Authorization: `Bearere ${ token }`
                     }
                 });
             console.log('Product added to wishlist:', response.data);
@@ -99,8 +100,6 @@ function Home() {
         }
     };
 
-    const imageUrl = "https://ecom-qybu.onrender.com"
-
     return (
         <div className='pt-16 pb-10 bg-gray-50 font-jakarta'>
             {/* loading state */}
@@ -114,7 +113,7 @@ function Home() {
             )}
 
             {/* error state */}
-            {error && (
+            {!loading && error && (
                 <div className="text-center text-red-600">
                     <p>Failed to load products. Please try again.</p>
                     <button
@@ -126,8 +125,8 @@ function Home() {
                 </div>
             )}
 
-            {
-                product.length > 0 ?
+            {!loading &&
+                (product.length > 0 ?
                     (<div className="grid grid-cols-2 lg:gap-4 lg:grid-cols-3 xl:mx-52" id="#offers">
                         {
                             product.map((product) => (
@@ -153,7 +152,7 @@ function Home() {
                                         alt={product.name}
                                         className="h-48 object-contain transition-transform hover:scale-105 duration-300 mx-auto p-8 md:p-4 w-64 rounded-lg mb-4"
                                     />
-                                    <Link to={`/product/${product._id}`}
+                                    <Link to={`/product/${ product._id }`}
                                         state={{
                                             name: product.name,
                                             image: product.productImages[0]?.url,
@@ -199,6 +198,7 @@ function Home() {
                             </button>
                         </div>
                     )
+                )
             }
         </div>
     )

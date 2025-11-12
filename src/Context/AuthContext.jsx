@@ -17,7 +17,7 @@ function AuthProvider({ children }) {
 
   const fetchUserDetails = async (token) => {
     try {
-      const response = await fetch('https://ecom-qybu.onrender.com/api/auth/user/profile', {
+      const response = await fetch('https://online-shop-backend-qpnv.onrender.com/api/auth/user/profile', {
         headers: {
           Authorization: `Bearer ${token}`,
         },

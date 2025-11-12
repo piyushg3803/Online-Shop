@@ -23,7 +23,7 @@ function ResetPassword() {
         }
 
         try {
-            const response = await fetch(`https://ecom-qybu.onrender.com/api/auth/user/password-reset/${token}`, {
+            const response = await fetch(`https://online-shop-backend-qpnv.onrender.com/api/auth/user/password-reset/${token}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ newPassword, confirmPassword }),

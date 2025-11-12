@@ -21,7 +21,7 @@ function ProductList() {
 
                 const token = localStorage.getItem('authToken')
 
-                const response = await fetch('https://ecom-qybu.onrender.com/api/product',
+                const response = await fetch('https://online-shop-backend-qpnv.onrender.com/api/product',
                     {
                         headers: {
                             Authorization: `Bearer ${token}`
@@ -47,7 +47,7 @@ function ProductList() {
 
             const token = localStorage.getItem('authToken')
 
-            await fetch(`https://ecom-qybu.onrender.com/api/product/${productId}`, { // Replace with your API endpoint
+            await fetch(`https://online-shop-backend-qpnv.onrender.com/api/product/${productId}`, { // Replace with your API endpoint
                 method: 'DELETE',
                 headers: {
                     Authorization: `Bearer ${token}`

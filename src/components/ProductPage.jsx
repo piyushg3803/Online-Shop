@@ -33,7 +33,7 @@ function ProductPage() {
         const loadProduct = async () => {
             try {
                 // Fetch product
-                const productResponse = await fetch(`https://ecom-qybu.onrender.com/api/product/${id}`);
+                const productResponse = await fetch(`https://online-shop-backend-qpnv.onrender.com/api/product/${ id }`);
                 if (!productResponse.ok) {
                     throw new Error('Failed to fetch product');
                 }
@@ -42,7 +42,7 @@ function ProductPage() {
 
                 // Fetch reviews (wrapped in try-catch block)
                 try {
-                    const reviewResponse = await fetch(`https://ecom-qybu.onrender.com/api/product/reviews/${id}`);
+                    const reviewResponse = await fetch(`https://online-shop-backend-qpnv.onrender.com/api/product/reviews/${ id }`);
                     if (reviewResponse.ok) {
                         const reviewData = await reviewResponse.json();
                         setReviews(reviewData.reviews || []);
@@ -78,19 +78,26 @@ function ProductPage() {
     const handleReviewSubmit = async (e) => {
         e.preventDefault();
 
+        console.log("Review Being submitted");
+
+
         const token = localStorage.getItem('authToken');
         if (!token) {
             alert('You need to log in to submit a review.');
+
             return;
+        }
+        else {
+            console.log("You are authenticated");
         }
 
         try {
             const response = await fetch(
-                `https://ecom-qybu.onrender.com/api/product/reviews/${id}`,
+                `https://online-shop-backend-qpnv.onrender.com/api/product/reviews/${ id }`,
                 {
                     method: 'POST',
                     headers: {
-                        Authorization: `Bearer ${token}`,
+                        Authorization: `Bearer ${ token }`,
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({ comment, rating }),
@@ -106,6 +113,8 @@ function ProductPage() {
                 setComment('');
                 setRating(5);
                 setSuccess('Review submitted successfully!');
+                console.log("Submitted the review");
+                
             } else {
                 const errorData = await response.json();
                 console.error(errorData);
@@ -113,7 +122,7 @@ function ProductPage() {
             }
         } catch (error) {
             console.error(error);
-            setError('Error Occured while sumitting the review. Please try again.');
+            setError('Error Occured while submitting the review. Please try again.');
         }
     };
 
@@ -168,11 +177,11 @@ function ProductPage() {
 
         try {
             const response = await fetch(
-                'https://ecom-qybu.onrender.com/api/order/create',
+                'https://online-shop-backend-qpnv.onrender.com/api/order/create',
                 {
                     method: 'POST',
                     headers: {
-                        Authorization: `Bearer ${token}`,
+                        Authorization: `Bearer ${ token }`,
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify(orderData),
@@ -186,13 +195,12 @@ function ProductPage() {
                 setOrderDetails(order);
                 setshowOrderConfirmation(true);
 
-                const productLink = product?.download_url; // Assuming each product has a `link` property
+                const productLink = product?.download_url;
                 if (productLink) {
                     setTimeout(() => {
-                        window.location.href = productLink; // Redirect to the product link
-                    }, 2000); // Delay for 2 seconds to show the confirmation modal
+                        window.location.href = productLink;
+                    }, 2000);
                 }
-
                 setStreet('');
                 setCity('');
                 setState('');
@@ -212,20 +220,17 @@ function ProductPage() {
 
     const handleFavs = async () => {
         try {
-
             const token = localStorage.getItem("authToken")
-
             if (!token) {
                 alert("You need to log in to add product to watchlist!");
                 return;
             }
-
-            const response = await axios.post(`https://ecom-qybu.onrender.com/api/auth/user/watchlist/${id}`, {
+            const response = await axios.post(`https://online-shop-backend-qpnv.onrender.com/api/auth/user/watchlist/${ id }`, {
                 productId: id,
             },
                 {
                     headers: {
-                        Authorization: `Bearer ${token}`
+                        Authorization: `Bearer ${ token }`
                     }
                 });
 
@@ -276,7 +281,7 @@ function ProductPage() {
                                                 <div className="aspect-w-16 aspect-h-9">
                                                     <img
                                                         src={imageObj.url}
-                                                        alt={`${product.name} - ${index + 1}`}
+                                                        alt={`${ product.name } - ${ index + 1 }`}
                                                         className="object-contain w-full h-96 rounded-lg hover:scale-105 transition-transform duration-300"
                                                     />
                                                 </div>
@@ -415,7 +420,7 @@ function ProductPage() {
                         </h2>
 
                         {/* Display Existing Reviews */}
-                        {reviews.length > 0 ? (
+                        {reviews && reviews.length > 0 ? (
                             <div className="space-y-4 mb-8">
                                 {reviews.map((review, index) => (
                                     <div key={index} className="p-4 border border-gray-100 rounded-lg hover:border-teal-200 transition duration-300">

@@ -35,11 +35,11 @@ function Profile() {
 
     const handleLogout = async () => {
         try {
-            const response = await fetch("https://ecom-qybu.onrender.com/api/auth/user/logout", {
+            const response = await fetch("https://online-shop-backend-qpnv.onrender.com/api/auth/user/logout", {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`
+                    Authorization: `Bearer ${ token }`
                 },
             });
 
@@ -92,7 +92,7 @@ function Profile() {
             const endpoint = signedUp ? '/user/register' : '/user/login';
             const userData = signedUp ? signupData : loginData;
 
-            const response = await fetch(`https://ecom-qybu.onrender.com/api/auth${endpoint}`, {
+            const response = await fetch(`https://online-shop-backend-qpnv.onrender.com/api/auth${ endpoint }`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(userData),
@@ -136,17 +136,24 @@ function Profile() {
 
         const formData = new FormData();
         formData.append('profileImage', file);
+        console.log("selected Image", file);
+        
+        for (let [key, value] of formData.entries()) {
+            console.log(key, value);
+            
+        }
 
         try {
-            const response = await fetch('https://ecom-qybu.onrender.com/api/auth/user/profile-image', {
+            const response = await fetch('https://online-shop-backend-qpnv.onrender.com/api/auth/user/profile-image', {
                 method: 'PATCH',
                 headers: {
-                    Authorization: `Bearer ${token}`,
+                    Authorization: `Bearer ${ token }`,
                 },
                 body: formData,
             });
 
             const data = await response.json();
+            console.log("data of profile", data);
 
             if (response.ok) {
                 const updatedProfile = { ...profileDetails, profileImage: data.profileImage };
@@ -165,11 +172,11 @@ function Profile() {
         setLoading(true);
 
         try {
-            const response = await fetch('https://ecom-qybu.onrender.com/api/auth/user/profile', {
+            const response = await fetch('https://online-shop-backend-qpnv.onrender.com/api/auth/user/profile', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`
+                    Authorization: `Bearer ${ token }`
                 },
             });
 
@@ -190,11 +197,11 @@ function Profile() {
 
     const updateQuantity = async () => {
         try {
-            const response = await fetch('https://ecom-qybu.onrender.com/api/auth/user/profile', {
+            const response = await fetch('https://online-shop-backend-qpnv.onrender.com/api/auth/user/profile', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`
+                    Authorization: `Bearer ${ token }`
                 },
             });
 
@@ -235,7 +242,7 @@ function Profile() {
         }
 
         try {
-            const response = await fetch('https://ecom-qybu.onrender.com/api/auth/user/password-forgot', {
+            const response = await fetch('https://online-shop-backend-qpnv.onrender.com/api/auth/user/password-forgot', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ email: forgotPasswordMail }),

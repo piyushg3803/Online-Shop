@@ -17,7 +17,7 @@ function SingleOrder() {
             try {
                 setLoading(true);
                 const token = localStorage.getItem('authToken');
-                const response = await fetch(`https://ecom-qybu.onrender.com/api/order/${id}`, {
+                const response = await fetch(`https://online-shop-backend-qpnv.onrender.com/api/order/${id}`, {
                     headers: {
                         'Content-Type': 'application/json',
                         Authorization: `Bearer ${token}`,

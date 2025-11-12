@@ -28,7 +28,7 @@ function Cart() {
                     return;
                 }
 
-                const response = await fetch('https://ecom-qybu.onrender.com/api/cart', {
+                const response = await fetch('https://online-shop-backend-qpnv.onrender.com/api/cart', {
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
@@ -50,7 +50,7 @@ function Cart() {
     const updateQuantity = async (productId, quantity) => {
         try {
             const token = localStorage.getItem('authToken');
-            const response = await fetch(`https://ecom-qybu.onrender.com/api/cart/update`, {
+            const response = await fetch(`https://online-shop-backend-qpnv.onrender.com/api/cart/update`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -83,7 +83,7 @@ function Cart() {
     const removeItem = async (productId) => {
         try {
             const token = localStorage.getItem('authToken');
-            const response = await fetch(`https://ecom-qybu.onrender.com/api/cart/remove/${productId}`, {
+            const response = await fetch(`https://online-shop-backend-qpnv.onrender.com/api/cart/remove/${productId}`, {
                 method: 'DELETE',
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -145,7 +145,7 @@ function Cart() {
         };
 
         try {
-            const response = await fetch('https://ecom-qybu.onrender.com/api/order/create', {
+            const response = await fetch('https://online-shop-backend-qpnv.onrender.com/api/order/create', {
                 method: 'POST',
                 headers: {
                     Authorization: `Bearer ${token}`,
