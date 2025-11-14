@@ -21,6 +21,7 @@
     "@tailwindcss/vite": "^4.1.3",
     "axios": "^1.13.1",
     "ecom-site": "file:",
+    "jwt-decode": "^4.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-modal": "^3.16.3",

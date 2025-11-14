@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { AuthContext } from '../Context/AuthContext';
 import profile from '/profile-icon.png';
 import ReactModal from 'react-modal';
+import { jwtDecode } from 'jwt-decode'
 
 function Profile() {
     const [signedUp, setSignedUp] = useState(true);
@@ -32,6 +33,15 @@ function Profile() {
 
     const navigate = useNavigate();
     const token = localStorage.getItem('authToken');
+
+    if (token) {
+        const decode = jwtDecode(token);
+        const currentTime = Date.now() / 1000;
+
+        if (currentTime > decode) {
+            localStorage.removeItem('authToken');
+        }
+    }
 
     const handleLogout = async () => {
         try {
@@ -134,18 +144,20 @@ function Profile() {
         const file = e.target.files[0];
         if (!file) return;
 
-        const formData = new FormData();
-        formData.append('profileImage', file);
+
         console.log("selected Image", file);
-        
+
         for (let [key, value] of formData.entries()) {
             console.log(key, value);
-            
         }
 
         try {
-            const response = await fetch('https://online-shop-backend-qpnv.onrender.com/api/auth/user/profile-image', {
-                method: 'PATCH',
+            const formData = new FormData();
+            formData.append('profileImage', file);
+
+            const token = localStorage.getItem('authToken')
+            const response = await fetch('https://online-shop-backend-qpnv.onrender.com/api/auth/profile/image', {
+                method: 'POST',
                 headers: {
                     Authorization: `Bearer ${ token }`,
                 },
