@@ -144,16 +144,15 @@ function Profile() {
         const file = e.target.files[0];
         if (!file) return;
 
-
         console.log("selected Image", file);
-
-        for (let [key, value] of formData.entries()) {
-            console.log(key, value);
-        }
 
         try {
             const formData = new FormData();
             formData.append('profileImage', file);
+
+            for (let [key, value] of formData.entries()) {
+                console.log(key, value);
+            }
 
             const token = localStorage.getItem('authToken')
             const response = await fetch('https://online-shop-backend-qpnv.onrender.com/api/auth/profile/image', {
@@ -164,17 +163,34 @@ function Profile() {
                 body: formData,
             });
 
+            if (!response.ok) {
+                const errorData = await response.json();
+                console.error('Upload Error:', errorData);
+                setError(errorData.message || 'Failed too upload image');
+                return;
+            }
+
             const data = await response.json();
             console.log("data of profile", data);
 
-            if (response.ok) {
-                const updatedProfile = { ...profileDetails, profileImage: data.profileImage };
+            if (data.data?.profileImage?.url) {
+                const updatedProfile = { ...profileDetails, profileImage: data.data.profileImage };
                 setProfileDetails(updatedProfile);
                 localStorage.setItem('profileDetails', JSON.stringify(updatedProfile));
                 alert('Profile image updated successfully!');
-            } else {
-                setError(data.message || 'Failed to update profile image.');
+                setError('');
             }
+
+            // const imageUrl = typeof data.data?.profileImage === 'string' ? data.data.profileImage : data.data?.profileImage?.url;
+
+            // if (imageUrl) {
+            //     const updatedProfile = { ...profileDetails, profileImage: data.profileImage };
+            //     setProfileDetails(updatedProfile);
+            //     localStorage.setItem('profileDetails', JSON.stringify(updatedProfile));
+            //     alert('Profile image updated successfully!');
+            //     setError('');
+            // }
+
         } catch (error) {
             console.error("Error uploading image", error);
         }
@@ -655,7 +671,7 @@ function Profile() {
                                         <div className="relative group">
                                             <div className="w-40 h-40 rounded-full overflow-hidden ring-4 ring-teal-100 bg-white shadow-md">
                                                 <img
-                                                    src={profileDetails?.profileImage || profile}
+                                                    src={profileDetails?.profileImage?.url || profile}
                                                     alt="Profile"
                                                     className="w-full h-full object-cover"
                                                 />
